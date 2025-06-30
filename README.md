@@ -14,10 +14,7 @@ A simple portfolio website that showcases three interactive games built with HTM
 - Scroll animations with IntersectionObserver
 
 ## 🔗 Live Demo
-[Add your Netlify or GitHub Pages link here]
-
-## 📁 Folder Structure
-Single-page HTML hosted with all code in `index.html`
+https://tushar-sharma-hub.github.io/mini-game-showcase/index.html
 
 ---
 
