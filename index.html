@@ -5,89 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tushar Sharma - Web Showcase</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: #111;
-      text-align: center;
-      padding: 3rem 1rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    section {
-      padding: 3rem 1rem;
-      text-align: center;
-      animation: fadeInUp 2s ease-in-out;
-    }
-    .project {
-      margin-bottom: 3rem;
-    }
-    .project h2 {
-      margin-bottom: 1rem;
-    }
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 10px;
-      background: #000;
-    }
-    a.github-link {
-      color: #00f5d4;
-      font-weight: bold;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 1.2rem;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .hidden {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 1.2s ease-out;
-    }
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <h1>Tushar Sharma</h1>
     <p>A simple showcase of mini games I built using HTML, CSS, and JavaScript.</p>
   </header>
-
-<section class="section project">
-  <h2>🎮 Tic Tac Toe</h2>
-  <iframe srcdoc="
+  <section class="section project">
+    <h2>🎮 Tic Tac Toe</h2>
+    <iframe srcdoc="
     <!DOCTYPE html>
     <html>
     <body style='font-family:sans-serif; text-align:center; background:#000; color:#fff;'>
@@ -95,12 +22,10 @@
       <table id='board' style='margin:auto; border-spacing:10px;'></table>
       <button onclick='reset()' style='margin-top:15px; padding:10px 20px; font-size:16px;'>Reset</button>
       <p id='message'></p>
-
       <script>
         let turn = 'X';
         const board = document.getElementById('board');
         const msg = document.getElementById('message');
-
         function checkWin() {
           const cells = [...board.getElementsByTagName('td')];
           const v = cells.map(td => td.innerText);
@@ -109,24 +34,20 @@
             [0, 3, 6], [1, 4, 7], [2, 5, 8],
             [0, 4, 8], [2, 4, 6]
           ];
-
           for (const [a, b, c] of lines) {
             if (v[a] && v[a] === v[b] && v[a] === v[c]) {
               [a, b, c].forEach(i => cells[i].style.background = '#00ff6a');
               return v[a];
             }
           }
-
           if (v.every(cell => cell)) return 'Draw';
           return null;
         }
-
         function reset() {
           board.innerHTML = '';
           msg.innerText = '';
           init();
         }
-
         function init() {
           for (let i = 0; i < 3; i++) {
             const row = board.insertRow();
@@ -152,14 +73,12 @@
             }
           }
         }
-
         init();
       </script>
     </body>
     </html>
   "></iframe>
-</section>
-
+  </section>
   <section class="section project hidden">
     <h2>🎯 Number Guessing Game</h2>
     <iframe srcdoc='
@@ -183,16 +102,13 @@
         <button onclick="check()">Guess</button>
         <button onclick="reset()">Reset</button>
         <p id="result"></p>
-
         <script>
           let num = null;
-
           function generate() {
             num = Math.floor(Math.random() * 100) + 1;
             document.getElementById("status").innerText = "I have made a number. Guess it! 🎯";
             document.getElementById("result").innerText = "";
           }
-
           function check() {
             const g = +document.getElementById("guess").value;
             if (num === null) {
@@ -200,7 +116,6 @@
               return;
             }
             if (!g) return;
-
             if (g === num) {
               document.getElementById("result").innerText = "🎉 Correct!";
             } else if (g < num) {
@@ -209,7 +124,6 @@
               document.getElementById("result").innerText = "📈 Too high! 😅";
             }
           }
-
           function reset() {
             num = null;
             document.getElementById("status").innerText = "";
@@ -221,7 +135,6 @@
       </html>
     '></iframe>
   </section>
-
   <section class="section project hidden">
     <h2>🧠 Memory Flip Game</h2>
     <iframe srcdoc='
@@ -271,12 +184,10 @@
         <h2>Memory Flip Game</h2>
         <div id="board"></div>
         <div id="winMsg">🎉 You Win! 🎉</div>
-
         <script>
           const values = "ABCDEFGH".split("").flatMap(v => [v, v]).sort(() => Math.random() - 0.5);
           const board = document.getElementById("board");
           let flips = [], done = [];
-
           values.forEach((v, i) => {
             const b = document.createElement("button");
             b.textContent = "?";
@@ -307,22 +218,7 @@
       </html>
     '></iframe>
   </section>
-
   <a class="github-link" href="https://github.com/Tushar-Sharma-hub" target="_blank">🔗 Check out my GitHub</a>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
